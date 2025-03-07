@@ -1,6 +1,5 @@
 # 🌍 Language Translator Web
 
-## Overview
 Language Translator Web is a lightweight yet powerful Flask-based web application that enables users to translate text into multiple languages using the Google Translate API.
 
 ---
