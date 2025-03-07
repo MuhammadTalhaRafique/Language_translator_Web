@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Translator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>🌎 Text Translator</h1>
+        <form method="POST" id="translator-form">
+            <label for="language">Choose a language:</label>
+            <select name="language" id="language">
+                {% for code, lang in languages.items() %}
+                <option value="{{ code }}" {% if code == selected_language %}selected{% endif %}>{{ lang }}</option>
+                {% endfor %}
+            </select>
+
+            <br><br>
+
+            <label for="text">Enter text:</label>
+            <textarea name="text" id="text" rows="4" cols="50"></textarea>
+
+            <br><br>
+
+            <button type="submit">Translate</button>
+        </form>
+
+        <div id="result-container">
+            {% if translated_text %}
+            <h2>Translation:</h2>
+            <p><strong id="translated-text">{{ translated_text }}</strong></p>
+            <p>Pronunciation: <span id="pronunciation">{{ pronunciation }}</span></p>
+            <p>Translated from: <span id="source-lang">{{ source_lang }}</span></p>
+            {% endif %}
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
